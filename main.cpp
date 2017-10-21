@@ -3,18 +3,23 @@
 #include <stdio.h>
 
 void *PrintHello(void *threadid) {
-	int *l = (int*)threadid;
-	int tID = *l;
-	printf("Hello World! Thread ID: %d\n", *l);
+	int tID = *((int*)threadid);
+	printf("Hello World! Thread ID: %d\n", tID);
+	return 0;
 }
 
 #define NUM 8
 
 int main() {
-	int i = 0;
+
 	pthread_t tab[NUM];
+	
+	int i;
+	int id[NUM];
+	
 	for(i = 0; i < NUM; i++) {
-		pthread_create(&tab[i], NULL, PrintHello, &i);
+		id[i] = i;
+		pthread_create(&tab[i], NULL, PrintHello, &id[i]);
 	}
 	
 	for(i = 0; i < NUM; i++) {
