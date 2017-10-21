@@ -11,11 +11,11 @@ void *PrintHello(void *threadid) {
 #define NUM 8
 
 int main() {
-
 	pthread_t tab[NUM];
-	
 	int i;
 	int id[NUM];
+	
+	printf("Hello Begin\n");
 	
 	for(i = 0; i < NUM; i++) {
 		id[i] = i;
@@ -25,6 +25,8 @@ int main() {
 	for(i = 0; i < NUM; i++) {
 		pthread_join(tab[i], NULL);
 	}
+	
+	printf("Hello End\n");
 	
 	return 0;
 }
