@@ -1,1 +1,2 @@
-# So_Pracownia1
+# operating-systems-multithreading
+
